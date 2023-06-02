@@ -1,0 +1,13 @@
+.code-example-world {
+    left: 50%;
+    position: relative;
+    top: 20%;
+  }
+  .floor {
+    height: 200px;
+    width: 200px;
+  }
+  .plane {
+    height: 50px;
+    width: 50px;
+  }
