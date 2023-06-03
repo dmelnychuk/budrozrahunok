@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <title>Builder</title>
-    <div class="table"> 
-        <h1>Builder</h1>
-        <input type="text" id="input" placeholder="Enter a number">
 
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="isometric-css.css">
+
+    <title>Builder</title>
+
+</head>
+<body>
+
+
+    <div class="table"> 
+        <div class="form">
+        <h1>Builder</h1>
 
         <form>
             <p>
@@ -26,41 +33,55 @@
             </p>
         </form>
     
-        <div id="foundationFields"></div>
+    <div id="foundationFields"></div>
 
 
-        <!-- <p> Pile Diameter</p>
-        <p> Pile Length</p>
-        <p> Pile Spacing</p>
-        <p> Pile Cap Thickness</p>
-        <p> Pile Cap Length</p>
-        <p> Pile Cap Width</p>
-
-        <p> Strip Width</p>
-        <p> Strip Length</p>
-        <p> Strip Spacing</p>
-        <p> Strip Depth</p>
-        <p> Strip Side A </p>
-        <p> Strip Side B</p>
-        <p> Strip Thickness</p>
-        
-
-        <p> Raft Width</p>
-        <p> Raft Length</p>
-        <p> Raft Thickness</p> -->
-
-
- 
-
-
-
-
-    <button id="btn">Calculate</button>
+    <button id="btn-calculate" class="btn">Calculate</button>
     </div>
+<div class="result">
+<h1>Result</h1>
 
-</head>
-<body>
+<!-- Isometric canvas-->
+<div class="isometric">
+    <div class="isometric__container">
+
+      <div
+        class="isometric foundation top"
+        data-view="top"
+        data-top=""
+        data-right=""
+        data-left=""
+        data-texture="images/gray_wool.png"
+
+       
+      ></div>
+      <div
+        class="isometric foundation front"
+        data-view="front"
+        data-top="10"
+        data-right=""
+        data-left=""
+        data-texture="images/gray_wool.png"
+
+      ></div>
+      <div
+        class="isometric foundation side"
+        data-view="side"
+        data-top="10"
+        data-right=""
+        data-left=""
+        data-texture="images/grass_block_side.png"
+
+      ></div>
+    </div>
+  </div>
+</div>
+    <!-- /Isometric canvas-->
+</div>
+</div>
     
-    <script src="./script.js"></script>
+    <script src="./show-fields.js"></script>
+    <script src="./raft.js"></script>
+    <script src="isometric-css.js"></script>
 </body>
 </html>

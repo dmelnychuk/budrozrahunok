@@ -1,7 +1,7 @@
 .code-example-world {
-    left: 50%;
+    left: 0%;
     position: relative;
-    top: 20%;
+    top: 8vw;
   }
   .floor {
     height: 200px;
@@ -10,4 +10,28 @@
   .plane {
     height: 50px;
     width: 50px;
+  }
+
+
+.isometric__container{
+  border: solid black;
+}
+.foundation {
+  position: relative;
+}
+
+  .top {
+    height: 450px;  /*X Side*/
+    width: 230px; /*Y Side*/
+    border: solid red;
+  }
+  .side {
+    height: 10px;  /*Z Side*/
+    width: 450px; /*X Side*/
+    border: solid forestgreen
+  }
+  .front {
+    height: 10px;  /*Z Side*/
+    width: 230px; /*Y Side*/
+    border: solid blue;
   }
