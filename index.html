@@ -41,42 +41,95 @@
 <div class="result">
 <h1>Result</h1>
 
-<!-- Isometric canvas-->
-<div class="isometric">
-    <div class="isometric__container">
 
-      <div
-        class="isometric foundation top"
-        data-view="top"
-        data-top=""
-        data-right=""
-        data-left=""
-        data-texture="images/gray_wool.png"
 
-       
-      ></div>
-      <div
-        class="isometric foundation front"
-        data-view="front"
-        data-top="10"
-        data-right=""
-        data-left=""
-        data-texture="images/gray_wool.png"
 
-      ></div>
-      <div
-        class="isometric foundation side"
-        data-view="side"
-        data-top="10"
-        data-right=""
-        data-left=""
-        data-texture="images/grass_block_side.png"
 
-      ></div>
-    </div>
-  </div>
+<!-- three canvas-->
+<div class="three">
+
+    <script src="https://threejs.org/build/three.js"></script>
+    <script>
+
+// Set up the scene
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ antialias: true }); // Enable antialiasing for smoother edges
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// Define the dimensions
+const length = 6;    // meters
+const width = 4;     // meters
+const height = 1;    // meter
+
+// Create the slab geometry
+const geometry = new THREE.BoxGeometry(length, height, width);
+
+const geometry2 = new THREE.BoxGeometry(length, height, width / 10);
+
+const material2 = new THREE.MeshBasicMaterial({
+  color: 0x88888800,
+  // transparent: true,
+  // opacity: 1, // Set the desired opacity value between 0 and 1
+});
+
+// Create the material (concrete texture)
+const material = new THREE.MeshBasicMaterial({
+  color: 0x888888,
+  // transparent: true,
+  // opacity: 1, // Set the desired opacity value between 0 and 1
+});
+
+// Create the slab mesh
+const slab = new THREE.Mesh(geometry, material);
+
+const slab2 = new THREE.Mesh(geometry2, material2);
+
+slab2.position.set(length / 2, height / 2, width / 2);  // Adjust the position as per your requirement
+// Position the slab
+slab.position.set(length, height , width );  // Adjust the position as per your requirement
+
+// Add the slab to the scene
+scene.add(slab);
+scene.add(slab2);
+
+// Add ambient light
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Add ambient light with a low intensity
+scene.add(ambientLight);
+
+// Add directional light
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8); // Add directional light with a higher intensity
+directionalLight.position.set(1, 9, 9); // Set the direction of the light
+scene.add(directionalLight);
+
+// Position and orient the camera
+camera.position.set(length * 1.5, length * 1.5, length * 1.5); // Adjust the camera position for a better view
+camera.lookAt(new THREE.Vector3(0, 0, 0));
+
+// Enable shadows
+renderer.shadowMap.enabled = true;
+slab.castShadow = true; // Enable shadow casting for the slab
+directionalLight.castShadow = true; // Enable shadow casting for the light
+renderer.shadowMap.type = THREE.PCFSoftShadowMap; // Set the shadow map type for softer shadows
+
+// Set up shadow properties
+directionalLight.shadow.mapSize.width = 1024; // Adjust to desired resolution
+directionalLight.shadow.mapSize.height = 1024; // Adjust to desired resolution
+directionalLight.shadow.bias = -0.001; // Adjust to reduce or remove self-shadowing artifacts
+
+// Render the scene
+function animate() {
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
+}
+animate();
+
+
+    </script>
+
 </div>
-    <!-- /Isometric canvas-->
+    <!-- /three canvas-->
 </div>
 </div>
     

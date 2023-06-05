@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Concrete Slab with Rebar</title>
+  <style>
+    body { margin: 0; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+  <script src="https://threejs.org/build/three.js"></script>
+  <script>
+    // Scene setup
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true }); // Add alpha property
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // Create concrete slab
+    const slabWidth = 4;
+    const slabHeight = 6;
+    const slabDepth = 0.3;
+
+    const slabGeometry = new THREE.BoxGeometry(slabWidth, slabHeight, slabDepth);
+    const slabMaterial = new THREE.MeshPhongMaterial({ color: 0x808080, transparent: true, opacity: 0.5 }); // Use MeshPhongMaterial
+    const slabMesh = new THREE.Mesh(slabGeometry, slabMaterial);
+    scene.add(slabMesh);
+
+    // Create rebar mesh
+    const rebarWidthSegments = 10;
+    const rebarLengthSegments = 30;
+
+    const rebarGeometry = new THREE.BoxGeometry(slabWidth / rebarWidthSegments, slabDepth, slabHeight / rebarLengthSegments);
+    const rebarMaterial = new THREE.MeshPhongMaterial({ color: 0x000000 }); // Use MeshPhongMaterial
+
+    for (let i = 0; i < rebarLengthSegments; i++) {
+      for (let j = 0; j < rebarWidthSegments; j++) {
+        const rebarMesh = new THREE.Mesh(rebarGeometry, rebarMaterial);
+        rebarMesh.position.set(
+          -slabWidth / 2 + (j + 0.5) * (slabWidth / rebarWidthSegments),
+          slabHeight / 2 - slabDepth / 2,
+          -slabHeight / 2 + (i + 0.5) * (slabHeight / rebarLengthSegments)
+        );
+        scene.add(rebarMesh);
+      }
+    }
+
+    // Position the camera
+    camera.position.z = 20;
+
+    // Add ambient light
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+
+    // Add directional light
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    directionalLight.position.set(0, 1, 0);
+    scene.add(directionalLight);
+
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+      renderer.render(scene, camera);
+    }
+    animate();
+  </script>
+</body>
+</html>
