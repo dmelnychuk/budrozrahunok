@@ -20,12 +20,12 @@
 
         <form>
             <p>
-                <input type="radio" id="piles" name="foundation" value="piles" onchange="showFields('piles')">
-                <label for="piles">Piles Foundation</label>
+                <input type="radio" id="piles" name="foundation" value="piles" onchange="showFields('piles')" disabled>
+                <label for="piles">Piles Foundation [🚧 Under construction]</label>
             </p>
             <p>
-                <input type="radio" id="strip" name="foundation" value="strip" onchange="showFields('strip')">
-                <label for="strip">Strip Foundation</label>
+                <input type="radio" id="strip" name="foundation" value="strip" onchange="showFields('strip')" disabled>
+                <label for="strip">Strip Foundation [🚧 Under construction]</label>
             </p>
             <p>
                 <input type="radio" id="raft" name="foundation" value="raft" onchange="showFields('raft')">
@@ -66,57 +66,72 @@ const height = 1;    // meter
 // Create the slab geometry
 const geometry = new THREE.BoxGeometry(length, height, width);
 
-const geometry2 = new THREE.BoxGeometry(length, height, width / 10);
-
-const material2 = new THREE.MeshBasicMaterial({
-  color: 0x88888800,
-  // transparent: true,
-  // opacity: 1, // Set the desired opacity value between 0 and 1
-});
 
 // Create the material (concrete texture)
 const material = new THREE.MeshBasicMaterial({
   color: 0x888888,
-  // transparent: true,
-  // opacity: 1, // Set the desired opacity value between 0 and 1
+  transparent: true,
+  opacity: 0.6, // Set the desired opacity value between 0 and 1
 });
 
 // Create the slab mesh
 const slab = new THREE.Mesh(geometry, material);
 
-const slab2 = new THREE.Mesh(geometry2, material2);
-
-slab2.position.set(length / 2, height / 2, width / 2);  // Adjust the position as per your requirement
 // Position the slab
 slab.position.set(length, height , width );  // Adjust the position as per your requirement
 
 // Add the slab to the scene
 scene.add(slab);
-scene.add(slab2);
+
 
 // Add ambient light
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Add ambient light with a low intensity
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.9); // Add ambient light with a low intensity
 scene.add(ambientLight);
 
-// Add directional light
-const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8); // Add directional light with a higher intensity
-directionalLight.position.set(1, 9, 9); // Set the direction of the light
-scene.add(directionalLight);
+// // Add directional light
+// const directionalLight = new THREE.DirectionalLight(0xffffff, 0.9); // Add directional light with a higher intensity
+// directionalLight.position.set(1, 1, 1); // Set the direction of the light
+// scene.add(directionalLight);
 
-// Position and orient the camera
-camera.position.set(length * 1.5, length * 1.5, length * 1.5); // Adjust the camera position for a better view
-camera.lookAt(new THREE.Vector3(0, 0, 0));
+let light = new THREE.DirectionalLight(0xffffff, 1);
+light.position.set(2, 10, 1);
+light.target.position.set(0, 0, 0);
 
-// Enable shadows
-renderer.shadowMap.enabled = true;
-slab.castShadow = true; // Enable shadow casting for the slab
-directionalLight.castShadow = true; // Enable shadow casting for the light
-renderer.shadowMap.type = THREE.PCFSoftShadowMap; // Set the shadow map type for softer shadows
+let light2 = new THREE.DirectionalLight(0xffffff, 1);   
+light2.position.set(-2, -10, -1);
+light2.target.position.set(0, 0, 0);
 
-// Set up shadow properties
-directionalLight.shadow.mapSize.width = 1024; // Adjust to desired resolution
-directionalLight.shadow.mapSize.height = 1024; // Adjust to desired resolution
-directionalLight.shadow.bias = -0.001; // Adjust to reduce or remove self-shadowing artifacts
+
+scene.add(light2);
+scene.add(light2.target);
+
+scene.add(light);
+scene.add(light.target);
+
+
+const geometry1 = new THREE.BoxGeometry( 1, 1, 1 );
+const material1 = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+const cube = new THREE.Mesh( geometry1, material1);
+scene.add( cube );
+
+camera.position.z = 5;
+
+
+
+// // Position and orient the camera
+// camera.position.set(length * 2, length * 2, length * 2); // Adjust the camera position for a better view
+// camera.lookAt(new THREE.Vector3(0, 0, 0));
+
+// // Enable shadows
+// renderer.shadowMap.enabled = true;
+// slab.castShadow = true; // Enable shadow casting for the slab
+// // directionalLight.castShadow = true; // Enable shadow casting for the light
+// renderer.shadowMap.type = THREE.PCFSoftShadowMap; // Set the shadow map type for softer shadows
+
+// // Set up shadow properties
+// directionalLight.shadow.mapSize.width = 1024; // Adjust to desired resolution
+// directionalLight.shadow.mapSize.height = 1024; // Adjust to desired resolution
+// directionalLight.shadow.bias = -0.001; // Adjust to reduce or remove self-shadowing artifacts
 
 // Render the scene
 function animate() {
