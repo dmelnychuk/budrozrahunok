@@ -1,155 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" type="text/css" href="isometric-css.css">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="isometric-css.css" />
 
     <title>Builder</title>
-
-</head>
-<body>
-
-
-    <div class="table"> 
-        <div class="form">
+  </head>
+  <body>
+    <div class="table">
+      <div class="form">
         <h1>Builder</h1>
 
         <form>
-            <p>
-                <input type="radio" id="piles" name="foundation" value="piles" onchange="showFields('piles')" disabled>
-                <label for="piles">Piles Foundation [🚧 Under construction]</label>
-            </p>
-            <p>
-                <input type="radio" id="strip" name="foundation" value="strip" onchange="showFields('strip')" disabled>
-                <label for="strip">Strip Foundation [🚧 Under construction]</label>
-            </p>
-            <p>
-                <input type="radio" id="raft" name="foundation" value="raft" onchange="showFields('raft')">
-                <label for="raft">Raft Foundation</label>
-            </p>
+          <p>
+            <input
+              type="radio"
+              id="piles"
+              name="foundation"
+              value="piles"
+              onchange="showFields('piles')"
+              disabled
+            />
+            <label for="piles">Piles Foundation [🚧 Under construction]</label>
+          </p>
+          <p>
+            <input
+              type="radio"
+              id="strip"
+              name="foundation"
+              value="strip"
+              onchange="showFields('strip')"
+              disabled
+            />
+            <label for="strip">Strip Foundation [🚧 Under construction]</label>
+          </p>
+          <p>
+            <input
+              type="radio"
+              id="raft"
+              name="foundation"
+              value="raft"
+              onchange="showFields('raft')"
+            />
+            <label for="raft">Raft Foundation</label>
+          </p>
         </form>
-    
-    <div id="foundationFields"></div>
 
+        <div id="foundationFields"></div>
 
-    <button id="btn-calculate" class="btn">Calculate</button>
-    </div>
-<div class="result">
-<h1>Result</h1>
+        <button id="btn-calculate" class="btn">Calculate</button>
+      </div>
+      <div class="result">
+        <h1>Result</h1>
 
-
-
-
-
-<!-- three canvas-->
-<div class="three">
-
+       <!-- three canvas -->
+<!-- three canvas -->
+<div class="three" id="canvasContainer">
     <script src="https://threejs.org/build/three.js"></script>
+  
     <script>
-
-// Set up the scene
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ antialias: true }); // Enable antialiasing for smoother edges
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
-
-// Define the dimensions
-const length = 6;    // meters
-const width = 4;     // meters
-const height = 1;    // meter
-
-// Create the slab geometry
-const geometry = new THREE.BoxGeometry(length, height, width);
-
-
-// Create the material (concrete texture)
-const material = new THREE.MeshBasicMaterial({
-  color: 0x888888,
-  transparent: true,
-  opacity: 0.6, // Set the desired opacity value between 0 and 1
-});
-
-// Create the slab mesh
-const slab = new THREE.Mesh(geometry, material);
-
-// Position the slab
-slab.position.set(length, height , width );  // Adjust the position as per your requirement
-
-// Add the slab to the scene
-scene.add(slab);
-
-
-// Add ambient light
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.9); // Add ambient light with a low intensity
-scene.add(ambientLight);
-
-// // Add directional light
-// const directionalLight = new THREE.DirectionalLight(0xffffff, 0.9); // Add directional light with a higher intensity
-// directionalLight.position.set(1, 1, 1); // Set the direction of the light
-// scene.add(directionalLight);
-
-let light = new THREE.DirectionalLight(0xffffff, 1);
-light.position.set(2, 10, 1);
-light.target.position.set(0, 0, 0);
-
-let light2 = new THREE.DirectionalLight(0xffffff, 1);   
-light2.position.set(-2, -10, -1);
-light2.target.position.set(0, 0, 0);
-
-
-scene.add(light2);
-scene.add(light2.target);
-
-scene.add(light);
-scene.add(light.target);
-
-
-const geometry1 = new THREE.BoxGeometry( 1, 1, 1 );
-const material1 = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-const cube = new THREE.Mesh( geometry1, material1);
-scene.add( cube );
-
-camera.position.z = 5;
-
-
-
-// // Position and orient the camera
-// camera.position.set(length * 2, length * 2, length * 2); // Adjust the camera position for a better view
-// camera.lookAt(new THREE.Vector3(0, 0, 0));
-
-// // Enable shadows
-// renderer.shadowMap.enabled = true;
-// slab.castShadow = true; // Enable shadow casting for the slab
-// // directionalLight.castShadow = true; // Enable shadow casting for the light
-// renderer.shadowMap.type = THREE.PCFSoftShadowMap; // Set the shadow map type for softer shadows
-
-// // Set up shadow properties
-// directionalLight.shadow.mapSize.width = 1024; // Adjust to desired resolution
-// directionalLight.shadow.mapSize.height = 1024; // Adjust to desired resolution
-// directionalLight.shadow.bias = -0.001; // Adjust to reduce or remove self-shadowing artifacts
-
-// Render the scene
-function animate() {
-  requestAnimationFrame(animate);
-  renderer.render(scene, camera);
-}
-animate();
-
-
+      // Set up the scene
+      const scene = new THREE.Scene();
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      const canvasContainer = document.getElementById('canvasContainer');
+  
+      const containerWidth = canvasContainer.clientWidth;
+      const containerHeight = canvasContainer.clientHeight;
+  
+      renderer.setSize(containerWidth, containerHeight);
+      canvasContainer.appendChild(renderer.domElement);
+  
+      const camera = new THREE.PerspectiveCamera(75, containerWidth / containerHeight, 0.1, 1000);
+      camera.position.z = 10;
+  
+      // Define the dimensions
+      const length = 6; // meters
+      const width = 4; // meters
+      const height = 1; // meter
+  
+      // Create the slab geometry
+      const geometry = new THREE.BoxGeometry(length, height, width);
+  
+      // Create the material (concrete texture)
+      const material = new THREE.MeshBasicMaterial({ color: 0xff8001 });
+  
+      // Create the slab mesh
+      const slab = new THREE.Mesh(geometry, material);
+      scene.add(slab);
+  
+      // Set up lights
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+      scene.add(ambientLight);
+  
+      // Render the scene
+      function animate() {
+        requestAnimationFrame(animate);
+  
+        // Rotate the slab
+        slab.rotation.y += 0.01;
+  
+        renderer.render(scene, camera);
+      }
+  
+      animate();
     </script>
+  </div>
+  <!-- /three canvas -->
+  
 
-</div>
-    <!-- /three canvas-->
-</div>
-</div>
-    
+
+
+
+      </div>
+    </div>
+
     <script src="./show-fields.js"></script>
-    <script src="./raft.js"></script>
-    <script src="isometric-css.js"></script>
-</body>
+
+  </body>
 </html>
