@@ -42,6 +42,15 @@ body {
     color: #333;
     margin-bottom: 20px;
   }
+
+ .piles {
+    color: #a49797;
+
+  }
+  .strip {
+    color: #a49797;
+
+  }
   
   input[type="text"] {
     padding: 8px;
