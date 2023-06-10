@@ -24,7 +24,7 @@ body {
     border-radius: 20px;
   }
   
-  .result
+  .result, .graphic
   {
     display: flex;
     flex-direction: column;
@@ -76,18 +76,19 @@ body {
   
   #btn-calculate {
     padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
+    color: #333;
+    border: solid 2px;
     cursor: pointer;
     font-size: 16px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 15px;
+   
 
   }
   
   #btn-calculate:hover {
-    background-color: #45a049;
+    background-color: grey;
+    color: whitesmoke;
+
   }
   
   .three {
