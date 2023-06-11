@@ -36,14 +36,12 @@ function calculateConcreteStrip() {
   
     // Display the results in the div element
     var resultDiv = document.querySelector(".result");
-    // resultDiv.innerHTML = "Concrete needed: " + volume + " cubic units<br>";
-    // resultDiv.innerHTML += "Rebar rebarWidth: " + rebarWidth + " meters<br>";
-    // resultDiv.innerHTML += "Rebar rebarLength: " + rebarLength + " meters<br>";
-    // resultDiv.innerHTML += "Rebar rebarThickness: " + rebarThickness + " meters<br>";
-    // resultDiv.innerHTML += "Rebar needed: " + rebarAmount + " meters";
-    resultDiv.innerHTML = "Test Result <br>";
+    resultDiv.innerHTML = "Concrete needed: " + volume + " cubic units<br>";
+    resultDiv.innerHTML += "Rebar rebarWidth: " + rebarWidth + " meters<br>";
+    resultDiv.innerHTML += "Rebar rebarLength: " + rebarLength + " meters<br>";
+    resultDiv.innerHTML += "Rebar rebarThickness: " + rebarThickness + " meters<br>";
+    resultDiv.innerHTML += "Rebar needed: " + rebarAmount + " meters";
+    // resultDiv.innerHTML = "Test Result <br>";
   }
   
-  document.getElementById("btn-calculate").addEventListener("click", calculateConcreteStrip);
-  
-  
+

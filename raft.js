@@ -29,8 +29,8 @@ function calculateConcreteRaft() {
   var rebarGap = 0.3; // Gap between rebars in meters
   var rebarWidth = Math.ceil(width / rebarGap) + 1; // Number of rebars in width
   var rebarLength = Math.ceil(length / rebarGap) + 1; // Number of rebars in length
-  var rebarThickness = Math.ceil(thickness / rebarGap); // Number of rebars in thickness
-  var rebarAmount = (rebarWidth * length + rebarLength * width) * rebarThickness;
+  var rebarLayers = Math.ceil(thickness / rebarGap); // Number of rebars in thickness
+  var rebarAmount = (rebarWidth * length + rebarLength * width) * rebarLayers;
 
 
   // Display the results in the div element
@@ -38,9 +38,9 @@ function calculateConcreteRaft() {
   resultDiv.innerHTML = "Concrete needed: " + volume + " cubic units<br>";
   resultDiv.innerHTML += "Rebar rebarWidth: " + rebarWidth + " meters<br>";
   resultDiv.innerHTML += "Rebar rebarLength: " + rebarLength + " meters<br>";
-  resultDiv.innerHTML += "Rebar rebarThickness: " + rebarThickness + " meters<br>";
+  resultDiv.innerHTML += "Rebar rebarLayers: " + rebarLayers + "<br>";
   resultDiv.innerHTML += "Rebar needed: " + rebarAmount + " meters";
 }
 
-document.getElementById("btn-calculate").addEventListener("click", calculateConcreteRaft);
+// document.getElementById("btn-calculate").addEventListener("click", calculateConcreteRaft);
 
