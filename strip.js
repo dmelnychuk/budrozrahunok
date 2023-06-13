@@ -23,24 +23,29 @@ function calculateConcreteStrip() {
     var depth = parseFloat(document.getElementsByName("stripDepth")[0].value);
   
     // Calculate the volume of concrete needed
-    var volume = width * length * thickness;
-  
+    var perimeter = 2 * (length + width);
+
+    // Calculate the volume of concrete required for the strip foundation
+    var volume = perimeter * thickness * depth;
   
     // Calculate the amount of rebar needed
     var rebarGap = 0.3; // Gap between rebars in meters
-    var rebarWidth = Math.ceil(width / rebarGap) + 1; // Number of rebars in width
-    var rebarLength = Math.ceil(length / rebarGap) + 1; // Number of rebars in length
-    var rebarThickness = Math.ceil(thickness / rebarGap); // Number of rebars in thickness
-    var rebarAmount = (rebarWidth * length + rebarLength * width) * rebarThickness;
+    // var rebarWidth = Math.ceil(width / rebarGap) + 1; // Number of rebars in width
+    var rebarTotalLength = Math.ceil( perimeter /rebarGap ) +1; // Total length of rebars
+    var rebarThickness = Math.ceil(thickness / rebarGap) +1; // Number of rebars in thickness
+    var rebarDepth = Math.ceil(depth / rebarGap) +1; // Number of rebars in thickness
+    var rebarAmount = rebarDepth + rebarThickness + rebarTotalLength;
   
   
     // Display the results in the div element
     var resultDiv = document.querySelector(".result");
     resultDiv.innerHTML = "Concrete needed: " + volume + " cubic units<br>";
-    resultDiv.innerHTML += "Rebar rebarWidth: " + rebarWidth + " meters<br>";
-    resultDiv.innerHTML += "Rebar rebarLength: " + rebarLength + " meters<br>";
+    // resultDiv.innerHTML += "Rebar rebarWidth: " + rebarWidth + " meters<br>";
+    resultDiv.innerHTML += "Rebar rebarTotalLength: " + rebarTotalLength + " meters<br>";
     resultDiv.innerHTML += "Rebar rebarThickness: " + rebarThickness + " meters<br>";
+    resultDiv.innerHTML += "Rebar rebarDepth: " + rebarDepth + " meters<br>";
     resultDiv.innerHTML += "Rebar needed: " + rebarAmount + " meters";
+    resultDiv.innerHTML += "Double check calculations";
     // resultDiv.innerHTML = "Test Result <br>";
   }
   
