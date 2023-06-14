@@ -27,16 +27,18 @@ function calculateConcreteStrip() {
 
     // Calculate the volume of concrete required for the strip foundation
     var volume = perimeter * thickness * depth;
+
   
     // Calculate the amount of rebar needed
     var rebarGap = 0.3; // Gap between rebars in meters
     // var rebarWidth = Math.ceil(width / rebarGap) + 1; // Number of rebars in width
-    var rebarTotalLength = Math.ceil( perimeter /rebarGap ) +1; // Total length of rebars
-    var rebarThickness = Math.ceil(thickness / rebarGap) +1; // Number of rebars in thickness
-    var rebarDepth = Math.ceil(depth / rebarGap) +1; // Number of rebars in thickness
+    var rebarTotalLength = Math.ceil( perimeter * (thickness/rebarGap) * (depth/rebarGap) ) ; // Total length of rebars
+    var rebarThickness = Math.ceil(thickness * (perimeter/rebarGap) * (depth/rebarGap) ) ; // Number of rebars in thickness
+    var rebarDepth = Math.ceil(depth * (perimeter/rebarGap) * (thickness/rebarGap)) +1; // Number of rebars in thickness
     var rebarAmount = rebarDepth + rebarThickness + rebarTotalLength;
-  
-  
+
+
+
     // Display the results in the div element
     var resultDiv = document.querySelector(".result");
     resultDiv.innerHTML = "Concrete needed: " + volume + " cubic units<br>";
@@ -45,7 +47,6 @@ function calculateConcreteStrip() {
     resultDiv.innerHTML += "Rebar rebarThickness: " + rebarThickness + " meters<br>";
     resultDiv.innerHTML += "Rebar rebarDepth: " + rebarDepth + " meters<br>";
     resultDiv.innerHTML += "Rebar needed: " + rebarAmount + " meters";
-    resultDiv.innerHTML += "Double check calculations";
     // resultDiv.innerHTML = "Test Result <br>";
   }
   
