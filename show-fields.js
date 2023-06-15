@@ -17,11 +17,8 @@ function showFields(foundationType) {
         foundationFields.innerHTML += `
             <p>Strip Width: <input type="text" name="stripWidth"></p>
             <p>Strip Length: <input type="text" name="stripLength"></p>
-            <p>Strip Spacing: <input type="text" name="stripSpacing"></p>
+            <p>Strip Thickness: <input type="text" name="stripThickness"></p> 
             <p>Strip Depth: <input type="text" name="stripDepth"></p>
-            <p>Strip Side A: <input type="text" name="stripSideA"></p>
-            <p>Strip Side B: <input type="text" name="stripSideB"></p>
-            <p>Strip Thickness: <input type="text" name="stripThickness"></p>
         `;
     } else if (foundationType === 'raft') {
         foundationFields.innerHTML += `
