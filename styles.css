@@ -33,7 +33,10 @@ body {
     margin: 20px;
     border-radius: 20px;
   }
-
+.graphic {
+  width: 500px;
+  height: 500px;
+}
   h1 {
     text-align: center;
     color: #333;
@@ -93,4 +96,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  #canvasConatainer {
+    
+      width: 800px;
+      height: 800px;
+  
   }

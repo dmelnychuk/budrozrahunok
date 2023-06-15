@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" type="text/css" href="styles.css" />
-    <link rel="stylesheet" type="text/css" href="isometric-css.css" />
 
     <title>Builder</title>
   </head>
@@ -25,7 +24,9 @@
               onchange="showFields('piles')"
               disabled
             />
-            <label for="piles" class="piles">Piles Foundation [🚧 Under construction]</label>
+            <label for="piles" class="piles"
+              >Piles Foundation [🚧 Under construction]</label
+            >
           </p>
           <p>
             <input
@@ -55,83 +56,29 @@
       </div>
 
       <div class="description">
- 
-      <div class="result">
-        <h1>Result</h1>
+        <div class="result">
+          <h1>Result</h1>
+        </div>
 
-      </div>
+        <div class="graphic">
+          <h1>Graphic</h1>
 
-      <div class="graphic">
-        <h1>Graphic</h1>
-
-
-       <!-- three canvas -->
-<!-- three canvas -->
-<div class="three" id="canvasContainer">
-    <script src="https://threejs.org/build/three.js"></script>
-  
-    <script>
-      // Set up the scene
-      const scene = new THREE.Scene();
-      const renderer = new THREE.WebGLRenderer({ antialias: true });
-      const canvasContainer = document.getElementById('canvasContainer');
-  
-      const containerWidth = canvasContainer.clientWidth;
-      const containerHeight = canvasContainer.clientHeight;
-  
-      renderer.setSize(containerWidth, containerHeight);
-      canvasContainer.appendChild(renderer.domElement);
-  
-      const camera = new THREE.PerspectiveCamera(75, containerWidth / containerHeight, 0.1, 1000);
-      camera.position.z = 10;
-  
-      // Define the dimensions
-      const length = 6; // meters
-      const width = 4; // meters
-      const height = 1; // meter
-  
-      // Create the slab geometry
-      const geometry = new THREE.BoxGeometry(length, height, width);
-  
-      // Create the material (concrete texture)
-      const material = new THREE.MeshBasicMaterial({ color: 0xff8001 });
-  
-      // Create the slab mesh
-      const slab = new THREE.Mesh(geometry, material);
-      scene.add(slab);
-  
-      // Set up lights
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-      scene.add(ambientLight);
-  
-      // Render the scene
-      function animate() {
-        requestAnimationFrame(animate);
-  
-        // Rotate the slab
-        slab.rotation.y += 0.01;
-  
-        renderer.render(scene, camera);
-      }
-  
-      animate();
-    </script>
-  </div>
-  <!-- /three canvas -->
-  
-
-
-
-
+         
+          <!-- three canvas -->
+          <div class="three" id="canvasContainer"></div>
+           <!-- three canvas -->
+        </div>
       </div>
     </div>
-
-  </div>
 
     <script src="./show-fields.js"></script>
     <script src="./raft.js"></script>
     <script src="./strip.js"></script>
     <script src="./calculate.js"></script>
+    <script  type="module" src="./main.js"></script>
+
+
+
 
   </body>
 </html>
