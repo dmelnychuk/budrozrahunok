@@ -20,7 +20,7 @@ import {
 
 // Initialize Three.js
 const scene = new Scene();
-scene.background = new Color('skyblue');
+scene.background = new Color ('aqua');
 
 const camera = new PerspectiveCamera(75, 1, 0.1, 1000); // Use an initial aspect ratio of 1
 const renderer = new WebGLRenderer();
