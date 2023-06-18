@@ -1,3 +1,7 @@
+import { calculateConcreteStrip } from './strip.js';
+import { calculateConcreteRaft } from './raft.js';
+
+
 document.getElementById("btn-calculate").addEventListener("click", function() {
     var foundationType = document.querySelector('input[name="foundation"]:checked').value;
     handleFoundationType(foundationType);
@@ -30,3 +34,4 @@ document.getElementById("btn-calculate").addEventListener("click", function() {
     calculateConcreteRaft();
   }
   
+

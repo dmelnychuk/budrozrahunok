@@ -28,3 +28,5 @@ function showFields(foundationType) {
         `;
     }
 }
+
+// export { showFields };

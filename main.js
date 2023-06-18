@@ -15,12 +15,12 @@ import {
   
   import { OrbitControls } from "https://cdn.skypack.dev/three@0.132.2/examples/jsm/controls/OrbitControls.js";
 
+  import { getFoundationSize } from './foundation.js';
 
-  // script.js
 
 // Initialize Three.js
 const scene = new Scene();
-scene.background = new Color ('aqua');
+scene.background = new Color ('whitesmoke');
 
 const camera = new PerspectiveCamera(75, 1, 0.1, 1000); // Use an initial aspect ratio of 1
 const renderer = new WebGLRenderer();
@@ -39,7 +39,7 @@ function updateRendererSize() {
 updateRendererSize();
 
 // Add objects, lights, etc. to the scene
-const geometry = new BoxBufferGeometry(1, 1, 1);
+const geometry = new BoxBufferGeometry(1, 3, 4, 9, 9, 9);
 const material = new MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
 const cube = new Mesh(geometry, material);
 scene.add(cube);

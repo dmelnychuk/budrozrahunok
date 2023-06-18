@@ -13,7 +13,8 @@
 //   }
   
 //   document.getElementById("btn-calculate").addEventListener("click", calculateConcreteRaft);
-
+import { updateFoundationSize } from './foundation.js';
+import { getFoundationSize } from './foundation.js';
 
 function calculateConcreteRaft() {
   // Get the input values
@@ -24,6 +25,14 @@ function calculateConcreteRaft() {
   // Calculate the volume of concrete needed
   var volume = width * length * thickness;
 
+  const raftFoundationSize = {
+    fdwidth: width,
+    fdlength: length,
+    fdthickness: thickness,
+  };
+  updateFoundationSize(raftFoundationSize);
+
+  console.log(getFoundationSize());
 
   // Calculate the amount of rebar needed
   var rebarGap = 0.3; // Gap between rebars in meters
@@ -42,5 +51,5 @@ function calculateConcreteRaft() {
   resultDiv.innerHTML += "Rebar needed: " + rebarAmount + " meters";
 }
 
-// document.getElementById("btn-calculate").addEventListener("click", calculateConcreteRaft);
+export { calculateConcreteRaft };
 

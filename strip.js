@@ -1,18 +1,6 @@
-// function calculateConcreteRaft() {
-//     // Get the input values
-//     var width = parseFloat(document.getElementsByName("raftWidth")[0].value);
-//     var length = parseFloat(document.getElementsByName("raftLength")[0].value);
-//     var thickness = parseFloat(document.getElementsByName("raftThickness")[0].value);
-  
-//     // Calculate the volume of concrete needed
-//     var volume = width * length * thickness;
-  
-//     // Display the result in the div element
-//     var resultDiv = document.querySelector(".result");
-//     resultDiv.innerHTML = "Concrete needed: " + volume + " cubic units";
-//   }
-  
-//   document.getElementById("btn-calculate").addEventListener("click", calculateConcreteRaft);
+import { updateFoundationSize } from './foundation.js';
+import { getFoundationSize } from './foundation.js';
+
 
 
 function calculateConcreteStrip() {
@@ -28,6 +16,17 @@ function calculateConcreteStrip() {
     // Calculate the volume of concrete required for the strip foundation
     var volume = perimeter * thickness * depth;
 
+
+    const stripFoundationSize = {
+      fdwidth: width,
+      fdlength: length,
+      fdthickness: thickness,
+      fddepth: depth,
+    };
+    updateFoundationSize(stripFoundationSize);
+    /////testing
+    console.log(getFoundationSize());
+    
   
     // Calculate the amount of rebar needed
     var rebarGap = 0.3; // Gap between rebars in meters
@@ -48,6 +47,8 @@ function calculateConcreteStrip() {
     resultDiv.innerHTML += "Rebar rebarDepth: " + rebarDepth + " meters<br>";
     resultDiv.innerHTML += "Rebar needed: " + rebarAmount + " meters";
     // resultDiv.innerHTML = "Test Result <br>";
+
   }
   
 
+export { calculateConcreteStrip };

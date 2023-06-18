@@ -1,5 +1,6 @@
 .table {
   display: flex;
+  justify-content: center
 
 }
 body {
@@ -13,12 +14,19 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 20px;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin: 20px;
     border-radius: 20px;
+    max-width: 200px; /* Added property to limit width */
+  }
+
+
+  .description {
+    width: calc(100% - 240px); /* Calculates width as (100% - 200px form width - 20px margin on each side) */
+    margin: 20px;
   }
   
   .result, .graphic
@@ -34,7 +42,7 @@ body {
     border-radius: 20px;
   }
 .graphic {
-  width: 500px;
+ 
   height: 500px;
 }
   h1 {
