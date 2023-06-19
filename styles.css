@@ -20,12 +20,12 @@ body {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin: 20px;
     border-radius: 20px;
-    max-width: 200px; /* Added property to limit width */
+    max-width: 300px; /* Added property to limit width */
   }
 
 
   .description {
-    width: calc(100% - 240px); /* Calculates width as (100% - 200px form width - 20px margin on each side) */
+    width: calc(100% - 340px); /* Calculates width as (100% - 200px form width - 20px margin on each side) */
     margin: 20px;
   }
   
