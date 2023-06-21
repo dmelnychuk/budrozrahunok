@@ -19,12 +19,14 @@ function showFields(foundationType) {
             <p>Strip Length: <input type="text" name="stripLength"></p>
             <p>Strip Thickness: <input type="text" name="stripThickness"></p> 
             <p>Strip Depth: <input type="text" name="stripDepth"></p>
+            <p>Strip Gap: <input type="text" name="stripGap" value="0.3"></p>
         `;
     } else if (foundationType === 'raft') {
         foundationFields.innerHTML += `
             <p>Raft Width: <input type="text" name="raftWidth"></p>
             <p>Raft Length: <input type="text" name="raftLength"></p>
             <p>Raft Thickness: <input type="text" name="raftThickness"></p>
+            <p>Raft Gap: <input type="text" name="raftGap" value="0.3"></p>
         `;
     }
 }

@@ -9,6 +9,7 @@ function calculateConcreteStrip() {
     var length = parseFloat(document.getElementsByName("stripLength")[0].value);
     var thickness = parseFloat(document.getElementsByName("stripThickness")[0].value);
     var depth = parseFloat(document.getElementsByName("stripDepth")[0].value);
+    var rebarGap = parseFloat(document.getElementsByName("stripGap")[0].value);
   
     // Calculate the volume of concrete needed
     var perimeter = 2 * (length + width);
@@ -29,7 +30,6 @@ function calculateConcreteStrip() {
     
   
     // Calculate the amount of rebar needed
-    var rebarGap = 0.3; // Gap between rebars in meters
     // var rebarWidth = Math.ceil(width / rebarGap) + 1; // Number of rebars in width
     var rebarTotalLength = Math.ceil( perimeter * (thickness/rebarGap) * (depth/rebarGap) ) ; // Total length of rebars
     var rebarThickness = Math.ceil(thickness * (perimeter/rebarGap) * (depth/rebarGap) ) ; // Number of rebars in thickness

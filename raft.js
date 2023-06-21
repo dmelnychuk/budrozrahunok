@@ -21,6 +21,7 @@ function calculateConcreteRaft() {
   var width = parseFloat(document.getElementsByName("raftWidth")[0].value);
   var length = parseFloat(document.getElementsByName("raftLength")[0].value);
   var thickness = parseFloat(document.getElementsByName("raftThickness")[0].value);
+  var rebarGap = parseFloat(document.getElementsByName("raftGap")[0].value);
 
   // Calculate the volume of concrete needed
   var volume = width * length * thickness;
@@ -35,7 +36,7 @@ function calculateConcreteRaft() {
   console.log(getFoundationSize());
 
   // Calculate the amount of rebar needed
-  var rebarGap = 0.3; // Gap between rebars in meters
+   // Gap between rebars in meters
   var rebarWidth = Math.ceil(width / rebarGap) + 1; // Number of rebars in width
   var rebarLength = Math.ceil(length / rebarGap) + 1; // Number of rebars in length
   var rebarLayers = Math.ceil(thickness / rebarGap); // Number of rebars in thickness
