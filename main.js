@@ -62,8 +62,8 @@ function renderScene() {
 // Animation function
 function animate() {
   animationId = requestAnimationFrame(animate);
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
+  cube.rotation.x += 0;
+  cube.rotation.y += 0;
   renderScene();
 }
 
@@ -77,3 +77,17 @@ window.addEventListener('click', () => {
     animate();
   }
 });
+
+
+const controls = new OrbitControls(camera, renderer.domElement);
+
+function animate() {
+  animationId = requestAnimationFrame(animate);
+  cube.rotation.x += 0;
+  cube.rotation.y += 0;
+
+  // Update the controls
+  controls.update();
+
+  renderScene();
+}
